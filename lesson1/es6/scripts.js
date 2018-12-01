@@ -13,7 +13,7 @@ class Timer {
     }
 
     start() {
-        this.interval = setInterval(this.tick.bind(this), 1000);
+        this.interval = setInterval(this.tick, 1000);
     }
     stop() {
         clearInterval(this.interval);
@@ -23,7 +23,7 @@ class Timer {
         this.el.innerHTML = this.time;
     }
 
-    tick() {
+    tick = () => {
         this.time--;
         if(this.time <= 0) {
             this.stop();

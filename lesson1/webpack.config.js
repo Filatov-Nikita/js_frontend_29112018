@@ -6,6 +6,17 @@ const conf = {
         path: path.resolve(__dirname, './js'),
         filename: 'main.js',
         publicPath: 'js/'
+    },
+    devServer: {
+        overlay: true
+    },
+    module: {
+        rules: [
+            {
+                test: /.+\.js$/,
+                loader: 'babel-loader'
+            }
+        ]
     }
 }
 
