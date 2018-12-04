@@ -1,6 +1,7 @@
-const path = require('path');
+/* global require __dirname module */
+let path = require('path');
 
-const conf = {
+let conf = {
     entry: './es6/scripts.js',
     output: {
         path: path.resolve(__dirname, './js'),
@@ -13,18 +14,18 @@ const conf = {
     module: {
         rules: [
             {
-                test: /.+\.js$/,
-                loader: 'babel-loader'
+                test: /\.js$/,
+                loader: 'babel-loader',
+                // exclude: '/node_modules/'
             }
         ]
     }
-}
+};
 
 module.exports = (env, options) => {
-    // console.log(options);
+    conf.devtool = options.mode === "production" ? 
+                    false :
+                    "cheap-module-eval-source-map";
 
-    conf.devtool = options.mode === "production" ?
-                        false :
-                        "cheap-module-eval-source-map";
     return conf;
 };

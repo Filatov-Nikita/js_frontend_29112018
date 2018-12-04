@@ -1,4 +1,7 @@
 /* global window */
+
+let obj = require('./symbol');
+
 window.addEventListener('load', function() {
     const el = this.document.querySelector('.timer');
     let timer = new Timer(el, 139);
