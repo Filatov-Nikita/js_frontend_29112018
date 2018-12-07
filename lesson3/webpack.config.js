@@ -2,7 +2,7 @@
 let path = require('path');
 
 let conf = {
-    entry: './es6/lesson3.js',
+    entry: './es6/index.js',
     //entry: './es6/lesson2-hw.js',
     //entry: './es6/lesson2-hw-test.js',
     output: {
@@ -25,7 +25,7 @@ let conf = {
 };
 
 module.exports = (env, options) => {
-    conf.devtool = options.mode === "production" ? 
+    conf.devtool = options.mode === "production" ?
                     false :
                     "cheap-module-eval-source-map";
 
