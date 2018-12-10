@@ -1,21 +1,34 @@
-import * as Promapi from './promapi'
+//import * as gen from './gen';
+import 'babel-polyfill';
+function* gen() {
+    console.log('gen', 1);
+    yield 1;
+    console.log('gen', 2);
+    yield 2;
+}
 
-Promapi.userReg()
-.then((res) => {
-    console.log(res);
-    return Promapi.userAuth(res.id);
-})
-.then((res) => {
-    console.log(res);
-    return Promapi.userData(res.token);
-})
-.then((res) => {
-    console.log(res);
-    return 1;
-})
-.then((res) => {
-    console.log(res);
-});
+for(let some of gen()) {
+    console.log(some);
+}
+
+// import * as Promapi from './promapi'
+
+// Promapi.userReg()
+// .then((res) => {
+//     console.log(res);
+//     return Promapi.userAuth(res.id);
+// })
+// .then((res) => {
+//     console.log(res);
+//     return Promapi.userData(res.token);
+// })
+// .then((res) => {
+//     console.log(res);
+//     return 1;
+// })
+// .then((res) => {
+//     console.log(res);
+// });
 
 // import * as BadApi from './badapi';
 // import {divide} from './exception';
