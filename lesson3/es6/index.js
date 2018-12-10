@@ -11,13 +11,10 @@ Promapi.userReg()
 })
 .then((res) => {
     console.log(res);
-    return Promapi.userAuth(res.data.id)
+    return 1;
 })
 .then((res) => {
     console.log(res);
-})
-.catch((err) => {
-    console.log(err);
 });
 
 // import * as BadApi from './badapi';

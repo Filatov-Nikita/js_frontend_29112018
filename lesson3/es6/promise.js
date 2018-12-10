@@ -1,4 +1,4 @@
-export default class Promise1{
+export default class Promise1 {
     constructor(callback) {
         this.callback = callback;
         this.state = 'pending';
@@ -12,10 +12,14 @@ export default class Promise1{
     reject = (res) => {
         this.state = 'reject';
         this.res = res;
+        if(!this.errCallback) {
+            throw new Error('uncauth exception')
+        }
         this.errCallback(this.res);
     }
 
     resolve = (res) => {
+        if(this.current >= this.thenArr.length) return;
         this.state = 'resolve';
         this.res = res;
         let then = this.thenArr[this.current](this.res);
@@ -25,6 +29,8 @@ export default class Promise1{
                 return i >= this.current
             });
             then.errCallback = this.errCallback
+        } else {
+            this.resolve(then);
         }
     }
 
