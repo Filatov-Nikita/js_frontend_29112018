@@ -17,7 +17,6 @@ async function userReg(){
             throw new Error("error in registration");
         }
     })
-
 }
 
 async function userAuth(id){

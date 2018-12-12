@@ -28,7 +28,7 @@ let some = new Promise(function(resolve, reject){
         let num = Math.random();
         num > 0.5 ? resolve(num) : reject(`${num} less than 0.5`);
     }, 200);
-    
+
 });
 
 console.log(some)
@@ -81,7 +81,7 @@ PromiseApi.userReg()
 
 import 'babel-polyfill';
 
-import * as AsyncApi from './lesson3/api-async';
+import * as AsyncApi from './api-async';
 
 async function UserProccess(){
     let regRes = await AsyncApi.userReg();
@@ -92,7 +92,7 @@ async function UserProccess(){
 
     let dataRes = await AsyncApi.userData(authRes.token);
     console.log(dataRes);
-    
+
     return dataRes.data;
 }
 

@@ -1,15 +1,35 @@
 //import * as gen from './gen';
 import 'babel-polyfill';
-function* gen() {
-    console.log('gen', 1);
-    yield 1;
-    console.log('gen', 2);
-    yield 2;
+import * as AsyncApi from './api-async';
+
+async function UserProccess(){
+    let regRes = await AsyncApi.userReg();
+    console.log(regRes);
+
+    let authRes = await AsyncApi.userAuth(regRes.id);
+    console.log(authRes);
+
+    let dataRes = await AsyncApi.userData(authRes.token);
+    console.log(dataRes);
+
+    return dataRes.data;
 }
 
-for(let some of gen()) {
-    console.log(some);
-}
+UserProccess().then((data) => {
+    console.log(data);
+}).catch((err) => {
+    console.log(err.message);
+});
+// function* gen() {
+//     console.log('gen', 1);
+//     yield 1;
+//     console.log('gen', 2);
+//     yield 2;
+// }
+
+// for(let some of gen()) {
+//     console.log(some);
+// }
 
 // import * as Promapi from './promapi'
 
